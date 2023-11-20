@@ -1,5 +1,8 @@
 # user specific files
 tmp
+main
+stream
+.vscode
 
 # Prerequisites
 *.d
