@@ -1,9 +1,16 @@
 CFLAGS = -O -std=c++17 -Wall -Wextra
 CC = g++ 
-SRC = 1stream.cpp
-OBJ = $(SRC:.cpp = .o) 
 
-main: $(OBJ) 
-	$(CC) $(CFLAGS) -o $@ $^
+SOURCES = 	1Stream.cpp \
+			2Containers.cpp \
+			3Templates.cpp
+
+EXECUTABLES = $(SOURCES:.cpp=)
+
+all: $(EXECUTABLES)
+
+$(EXECUTABLES): % : %.cpp
+	$(CC) $(CFLAGS) -o $@ $<
+
 clean:
-	rm -f main *.o
+	rm -f $(EXECUTABLES)

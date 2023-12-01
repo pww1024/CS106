@@ -1,8 +1,10 @@
 # user specific files
 tmp
 main
-stream
 .vscode
+1Stream
+2Containers
+3Templates
 
 # Prerequisites
 *.d
