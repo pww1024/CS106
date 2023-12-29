@@ -68,4 +68,6 @@ const int& ref = pi;
 作为函数参数
 void myFunction(const int& x);
 
-
+12.when to use reference to pass parameters?
+    You should not  copy the parameter p if sizeof(p) >= 4 * sizeof(int)
+    You should not use a const reference to p if sizeof(p) < 4 * sizeof(int)
