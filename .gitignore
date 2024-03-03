@@ -5,6 +5,8 @@ main
 1Stream
 2Containers
 3Templates
+*test.cpp
+test.cpp
 
 # Prerequisites
 *.d
