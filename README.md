@@ -1,4 +1,4 @@
-# CS106
+# CS106L
 
 ## reference links:
 
