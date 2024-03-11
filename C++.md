@@ -98,7 +98,7 @@ __attribute__((packed))
 
     (2)SYN-ACK（同步确认）：服务器收到客户端的SYN报文后，会返回一个SYN-ACK报文。这个报文包含两部分信息：一是ACK（确认字符），它确认客户端的SYN（即确认号为x+1，表示服务器期待接收客户端后续报文的序列号），二是服务器自己的SYN报文，包含服务器随机产生的序列号（我们假设为序列号y）。
 
-    (3)ACK（确认）：客户端收到服务器的SYN-ACK报文后，会发送一个ACK报文作为回应。这个ACK报文的序列号是x+1（表示客户端接收到了服务器的SYN报文），而确认号则是y+1（表示客户端期待接收服务器后续报文的序列号）。
+    (3)ACK（确认）：客户端收到服务器的SYN-ACK报文后，会发送一个ACK报文作为回应。这个ACK报文的序列号是y+1。
 
 15.回调函数 callback function
     一种在程序运行中通过函数指针调用的函数,在运行时决定调用哪个函数，非常适合事件驱动或异步编程
@@ -125,4 +125,3 @@ __attribute__((packed))
         std::cout << "Another lambda callback with data: " << data << std::endl;
     };
     ProcessEvent(10, concreteCallback);
-
