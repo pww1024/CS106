@@ -1,11 +1,26 @@
 #include<iostream>
 #include<string>
 #include<sstream>
+#include<istream>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+
+void printBitInfo(istream& s) 
+{
+    cout << "State bits: ";
+	
+    // stream的四种状态
+    cout << (s.good() ? "G" : "-"); // 表示输入正常，可继续接受输入
+    cout << (s.fail() ? "F" : "-"); // 表示输入出现异常(Type mismatch, file can't be opened, seekg failed, so on)，未来不可以继续接受输入
+    cout << (s.eof() ? "E" : "-"); // Reach the end
+    cout << (s.bad() ? "B" : "-"); // Couldn't move characters to buffer from external resource(e.g. the file is suddenlt deleted)
+
+    cout << endl;
+    cout << "-----------" << endl;
+}
 
 int string2Integer(const string& s)
 {

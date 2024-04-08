@@ -1,6 +1,4 @@
-# T
-
-## 
+# Template
 
 procedural programming -> c
 

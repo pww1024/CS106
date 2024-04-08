@@ -16,11 +16,6 @@ __attribute__((packed))
     智能指针std::shared_ptr和std::unique_ptr
     引入线程库std::thread
 
-4.主流编译器
-    GNU (GCC)
-    Clang
-    Microsoft Visual C++
-
 5.智能指针
     遇到的问题:
         动态创建某个对象时,在程序结束时没有调用delete,则不会自动调用析构函数
@@ -60,6 +55,9 @@ __attribute__((packed))
     需要注意ARP欺骗等安全风险。
 
 8.多态原理
+    (1)派生类的构造函数和析构函数的调用顺序
+        创建：先调用基类的构造函数再调用父类的构造函数
+        析构：先调用子类的析构函数再调用父类的析构函数
 
 9.STL
 
@@ -67,7 +65,7 @@ __attribute__((packed))
     (1)什么是内存泄露？
     程序在申请内存后，未能在不再需要时释放，
     导致程序运行过程中逐渐消耗更多的内存，最终可能导致程序运行缓慢或崩溃
-    
+
     (2)写代码时遵循RAII原则，使用智能指针std::unique_ptr,std::shared_ptr
     查找未匹配的new delete，未关闭的文件句柄或数据库连接等
 
@@ -125,3 +123,38 @@ __attribute__((packed))
         std::cout << "Another lambda callback with data: " << data << std::endl;
     };
     ProcessEvent(10, concreteCallback);
+
+16.static
+    (1)修饰函数内部的局部变量，
+    该变量的生命周期会持续到程序的整个执行过程，
+    变量分配到内存的**静态存储区**
+    (2)修饰函数或全局变量
+    会将它们的作用域限制在当前文件内部，
+    使得它们不能被其他文件所访问
+    全局变量的作用域仍在本文件中，其他文件通过extern也不能访问他
+
+17.extern
+    (1)对于全局变量，想访问其他文件中的全局变量需在本文件代码中声明他并且加上extern
+    (2)对于函数，默认就是extern，但是加上extern能增加代码可读性
+    两个作用
+    (1)解决跨文件访问变量和函数的需求
+    (2)提高编程的模块化和封装性
+
+18.volatile
+
+    定义为volatile的变量可以在程序外部被修改，
+    因此编译器在优化代码时不应该假设这个变量的值会保持不变
+    防止被编译器优化
+
+19.const
+
+19.noexcept
+    C++11引入
+    (1)无条件 noexcept
+    void myFunction() noexcept;
+    在函数声明的末尾添加 noexcept 关键字，这表示该函数不会抛出任何异常
+    (2)条件 noexcept
+    void anotherFunction() noexcept(true);
+    noexcept 还可以跟随一个布尔表达式，当表达式为 true 时，函数被视为不抛出异常。
+    (3)基于另一个函数是否抛出异常
+    void myFunction() noexcept(noexcept(otherFunction()));

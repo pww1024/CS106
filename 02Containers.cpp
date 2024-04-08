@@ -46,8 +46,6 @@ void printElement3(const map<string,int> &wordMap)
     }
 }
 
-
-
 int main()
 {
     map<string,int> frepMap = readUserWords();
